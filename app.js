@@ -6,7 +6,6 @@ const session = require("express-session");
 const passport = require("passport");
 const bodyParser = require("body-parser");
 require("dotenv").config();
-const bcrypt = require("bcryptjs");
 const env = process.env.NODE_ENV || "development";
 const config = require("./config/config.json")[env];
 const MONGO_URI = config.MongoURI;
@@ -37,6 +36,11 @@ app.use(
     })
 );
 
+// Passport Configuration
+app.use(passport.initialize());
+app.use(passport.session());
+require("./config/passport")(passport);
+
 //Database connection
 mongoose
   .connect(MONGO_URI)
@@ -46,6 +50,7 @@ mongoose
   .catch((err) => console.error("MongoDB connection error:", err));
 
 app.use('/users', require('./routes/user.route'));
+app.use("/auth", require('./routes/auth.route'));
 
 const PORT = process.env.PORT || 4000;
 app.listen(PORT, () => {

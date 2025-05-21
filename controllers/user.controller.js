@@ -228,6 +228,7 @@ const handleCreateUserPostRequest = async (req, res) => {
       message: "New user creation successfully!",
       content: newUser,
     });
+    
   } catch (err) {
     console.error(err);
     res.status(500).json({
