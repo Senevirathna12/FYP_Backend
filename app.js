@@ -45,6 +45,8 @@ mongoose
   })
   .catch((err) => console.error("MongoDB connection error:", err));
 
+app.use('/users', require('./routes/user.route'));
+
 const PORT = process.env.PORT || 4000;
 app.listen(PORT, () => {
   console.log("Server is running at port 4000");

@@ -26,4 +26,7 @@ const UserSchema = new Schema({
     gitAccessTiken:{
         type : String
     }
-})
+});
+
+const UserModel = mongoose.model('user',UserSchema);
+module.exports = UserModel;
