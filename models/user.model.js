@@ -19,10 +19,6 @@ const UserSchema = new Schema({
         type: String,
         required: [true, "Please provide a password"],
     },
-    isActive: {
-        type: Boolean,
-        default: true,
-    },
     gitAccessTiken:{
         type : String
     }

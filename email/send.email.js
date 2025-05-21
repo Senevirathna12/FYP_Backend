@@ -1,5 +1,7 @@
 const nodemailer = require('nodemailer');
-const {SEND_MAIL_CONFIG} = require('../config/send.email.config')
+const name = 'sendEmail';
+const {SEND_MAIL_CONFIG} = require('../config/send.email.config');
+
 const transporter = nodemailer.createTransport(SEND_MAIL_CONFIG);
 
 const emailSender = async(email,link)=> {
